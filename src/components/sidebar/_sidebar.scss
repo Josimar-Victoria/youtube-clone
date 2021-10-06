@@ -1,0 +1,55 @@
+@import "../../global.scss";
+
+.sidebar {
+  background: $black-secondary-color;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 90vh;
+  padding-top: 2rem;
+  li {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    margin: 0.2rem 0;
+    cursor: pointer;
+    span {
+      margin-left: 1rem;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+    }
+    &:hover {
+      background-color: $black-border-color;
+    }
+  }
+  hr {
+    background-color: $black-border-color;
+  }
+
+  &.open{
+      display: block;
+      transition: all .3s ease;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+}
+}
+
+@media screen and (max-width: $break-point-medium) {
+  .sidebar {
+    width: 90px;
+    li {
+      justify-content: center;
+    }
+    span {
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: $break-point-small) {
+    .sidebar {
+        display: none;
+    }
+}

@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,300;1,400&display=swap");
+
+$text-color: #b1bdb4;
+$black-primary-color: #16181b;
+$black-secondary-color: #121417;
+$black-border-color: #4c4c4c;
+$break-point-medium: 1224px;
+$break-point-small: 520px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: $black-primary-color;
+  background-attachment: fixed;
+  color: $text-color;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.1;
+}
