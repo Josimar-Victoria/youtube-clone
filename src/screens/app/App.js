@@ -13,7 +13,7 @@ function App() {
     <>
       <Header handleToggleSidebar={handleToggleSidebar} />
       <div className="app_container ">
-        <Sidebar sidebar={sidebar} />
+        <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
         <Container className="app_main " fluid>
           <HomeScreen />
         </Container>

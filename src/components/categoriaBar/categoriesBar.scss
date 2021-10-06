@@ -1,0 +1,34 @@
+@import '../../global.scss';
+
+.categoriesBas{
+    padding: 0.5px 0; 
+    font-size: 0.8rem;
+    margin-top: 20px;
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none !important;
+ &::-webkit-scrollbar{
+     width: 0px
+ }
+  span{
+     margin-right: 1rem;
+     padding: 0.5rem;
+     white-space: nowrap;
+     border: 1.5px solid $text-color;
+     border-radius: 999px;
+     -webkit-border-radius: 999px;
+     -moz-border-radius: 999px;
+     -ms-border-radius: 999px;
+     -o-border-radius: 999px;
+     cursor: pointer;
+     &:hover{
+         background-color: #374a59
+     }
+     &.active{
+         color: #fff;
+         background-color: #606060;
+         border-color: $black-border-color;
+     }
+}
+
+}

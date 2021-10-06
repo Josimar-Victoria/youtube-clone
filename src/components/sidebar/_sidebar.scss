@@ -7,6 +7,11 @@
   width: 250px;
   height: 90vh;
   padding-top: 2rem;
+  transition: transform 0.2s ease-in;
+  -webkit-transition: transform 0.2s ease-in;
+  -moz-transition: transform 0.2s ease-in;
+  -ms-transition: transform 0.2s ease-in;
+  -o-transition: transform 0.2s ease-in;
   li {
     display: flex;
     align-items: center;
@@ -20,21 +25,20 @@
       letter-spacing: 0.4px;
     }
     &:hover {
-      background-color: $black-border-color;
+      background-color: #374a59;
     }
   }
   hr {
     background-color: $black-border-color;
   }
 
-  &.open{
-      display: block;
-      transition: all .3s ease;
-      -webkit-transition: all .3s ease;
-      -moz-transition: all .3s ease;
-      -ms-transition: all .3s ease;
-      -o-transition: all .3s ease;
-}
+  &.open {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
 }
 
 @media screen and (max-width: $break-point-medium) {
@@ -49,7 +53,13 @@
   }
 }
 @media screen and (max-width: $break-point-small) {
-    .sidebar {
-        display: none;
-    }
+  .sidebar {
+    position: fixed;
+    z-index: 9999;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+  }
 }
