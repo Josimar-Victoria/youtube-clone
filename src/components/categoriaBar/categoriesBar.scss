@@ -4,12 +4,31 @@
     padding: 0.5px 0; 
     font-size: 0.8rem;
     margin-top: 20px;
+    margin-bottom: 39px;
     display: flex;
     overflow-x: scroll;
     scrollbar-width: none !important;
  &::-webkit-scrollbar{
-     width: 0px
+     width: 0px !important;
+     height: 7px !important;
+     
  }
+ &::-webkit-scrollbar-track {
+    background-color: $black-border-color;
+    border-radius:999px;
+    -webkit-border-radius:999px;
+    -moz-border-radius:999px;
+    -ms-border-radius:999px;
+    -o-border-radius:999px;
+}
+  &::-webkit-scrollbar-thumb {
+    background-color: #374a59;
+    border-radius:999px;
+    -webkit-border-radius:999px;
+    -moz-border-radius:999px;
+    -ms-border-radius:999px;
+    -o-border-radius:999px;
+  }
   span{
      margin-right: 1rem;
      padding: 0.5rem;

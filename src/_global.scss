@@ -19,3 +19,11 @@ body {
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.1;
 }
+@mixin  line-clamp($number) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;
+}
+
+

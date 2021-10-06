@@ -13,7 +13,7 @@ export default function Header({ handleToggleSidebar }) {
       />
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
-        alt=""
+        alt="logo"
         className="header__logo"
       />
       <form action="">
