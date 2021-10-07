@@ -4,13 +4,15 @@ import {
   HOME_VIDEOS_SUCCESS,
 } from "../actionType";
 
-const initialState = {
-  videos: [],
-  loading: false,
-  nextPageToken: null,
-};
-
-export const homeVideosReducer = (state = initialState, action) => {
+export const homeVideosReducer = (
+  state = {
+    videos: [],
+    loading: false,
+    nextPageToken: null,
+    activeCategory: "All",
+  },
+  action
+) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -21,6 +23,7 @@ export const homeVideosReducer = (state = initialState, action) => {
         loading: false,
         nextPageToken: payload.nextPageToken,
       };
+
     case HOME_VIDEOS_FAIL:
       return {
         ...state,
