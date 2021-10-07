@@ -1,26 +1,34 @@
-import { useState } from "react";
-import { Container } from "react-bootstrap";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Header from "../../components/header/Header";
-import Sidebar from "../../components/sidebar/Sidebar";
 import HomeScreen from "../homeScreen/HomeScreen";
 import LoginScreen from "../loginScreen/LoginScreen";
-import "./_app.scss";
-function App() {
-  const [sidebar, toggleSidebar] = useState(false);
 
-  const handleToggleSidebar = () => toggleSidebar((value) => !value);
+import NoMatch from "../../components/noMatch/NoMatch";
+import Layout from "../../components/layout/Layout";
+
+function App() {
   return (
-    // <>
-    //   <Header handleToggleSidebar={handleToggleSidebar} />
-    //   <div className="app_container ">
-    //     <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar} />
-    //     <Container className="app_main " fluid>
-    //       <HomeScreen />
-    //     </Container>
-    //   </div>
-    // </>
-    <LoginScreen/>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Layout>
+            <HomeScreen />
+          </Layout>
+        </Route>
+        <Route exact path="/search">
+          <Layout>
+            <h1>Search Resultados</h1>
+          </Layout>
+        </Route>
+        <Route path="/login">
+          <LoginScreen />
+        </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
