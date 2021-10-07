@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import './categoriesBar.scss'
+import { useDispatch } from "react-redux";
+import { getVideosByCategory } from "../../redux/actions/videos.action";
+import "./categoriesBar.scss";
 const keywords = [
   "All",
   "React js",
@@ -17,13 +19,16 @@ const keywords = [
   "Real Madrid",
   "Gatsby",
   "Poor Coder",
-  "Shwetabh",
+  "anuel aa",
 ];
 export default function CategoriesBar() {
   const [activeElement, setActiveElement] = useState("All");
 
+  const dispatch = useDispatch();
+
   const handlerClick = (value) => {
     setActiveElement(value);
+    dispatch(getVideosByCategory(value));
   };
   return (
     <div className="categoriesBas">

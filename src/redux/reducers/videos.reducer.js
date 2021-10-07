@@ -22,6 +22,7 @@ export const homeVideosReducer = (
         videos: payload.videos,
         loading: false,
         nextPageToken: payload.nextPageToken,
+        activeCategory: payload.category,
       };
 
     case HOME_VIDEOS_FAIL:
