@@ -3,12 +3,17 @@ import {
   LOGIN_REQUEST,
   LOG_PROFILE,
   LOGIN_SUCCESS,
+  LOG_OUT,
 } from "../actionType";
 
 const initialState = {
-  accessToken: null,
-  user: null,
-  loading: null,
+  accessToken: sessionStorage.getItem("ytc-access-token")
+    ? sessionStorage.getItem("ytc-access-token")
+    : null,
+  user: sessionStorage.getItem("ytc-user")
+    ? JSON.parse(sessionStorage.getItem("ytc-"))
+    : null,
+  loading: false,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -38,6 +43,12 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         user: payload,
       };
+      case LOG_OUT:
+        return {
+           ...state,
+           accessToken: null,
+           user: null,
+        }
     default:
       return state;
   }

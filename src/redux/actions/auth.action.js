@@ -4,6 +4,7 @@ import {
   LOGIN_FAIL,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  LOG_OUT,
   LOG_PROFILE,
 } from "../actionType";
 export const login = () => async (dispatch) => {
@@ -12,15 +13,17 @@ export const login = () => async (dispatch) => {
       type: LOGIN_REQUEST,
     });
     const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
     const res = await auth.signInWithPopup(provider);
-    console.log(res);
 
     const accessToken = res.credential.accessToken;
     const profile = {
       name: res.additionalUserInfo.profile.name,
       photoURL: res.additionalUserInfo.profile.picture,
     };
-    console.log(profile)
+
+    sessionStorage.setItem("ytc-access-token", accessToken);
+    sessionStorage.setItem("ytc-user", JSON.stringify(profile));
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -37,4 +40,13 @@ export const login = () => async (dispatch) => {
       payload: error.message,
     });
   }
+};
+
+export const log_out = () => async (dispatch) => {
+  await auth.signOut();
+  dispatch({
+    type: LOG_OUT,
+  });
+  sessionStorage.removeItem("ytc-access-token");
+  sessionStorage.removeItem("ytc-user");
 };
