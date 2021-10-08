@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import HomeScreen from "../homeScreen/HomeScreen";
 import LoginScreen from "../loginScreen/LoginScreen";
@@ -8,7 +7,6 @@ import NoMatch from "../../components/noMatch/NoMatch";
 import Layout from "../../components/layout/Layout";
 
 function App() {
-
   return (
     <BrowserRouter>
       <Switch>
