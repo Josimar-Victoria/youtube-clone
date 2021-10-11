@@ -7,25 +7,44 @@ $black-border-color: #4c4c4c;
 $break-point-medium: 1224px;
 $break-point-small: 520px;
 
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background: $black-primary-color;
   background-attachment: fixed;
   color: $text-color;
-  font-family: 'Open Sans', sans-serif;
-  letter-spacing: 0.1;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.1px;
 }
-@mixin  line-clamp($number) {
+
+@mixin line-clamp($number) {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: $number;
   -webkit-box-orient: vertical;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 12px !important;
+  cursor: pointer;
+}
+::-webkit-scrollbar-track {
+  background-color: $black-border-color;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #374a59;
+  cursor: pointer;
+} 
 
 a{
   color: $text-color;
