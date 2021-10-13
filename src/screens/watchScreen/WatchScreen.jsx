@@ -10,14 +10,13 @@ export default function WatchScreen() {
       <Col lg={8}>
         <div className="watchScreen__player">
           <iframe
-            src="https://www.youtube.com/embed/tgbNymZ7vqY"
+            src="https://www.youtube.com/08be2f22-43d4-4bc7-b23b-fd8c584213c0"
             frameBorder="0"
             title="MY VIDEO"
             allowFullscreen
             width="100%"
             height="100%"
           ></iframe>
-         {/* https://www.youtube.com/38e59ce4-9279-4630-a3a3-b8ad18429654 */}
         </div>
         <VideoMetaData />
         <Comments />

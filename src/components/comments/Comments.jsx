@@ -5,23 +5,18 @@ export default function Comments() {
   const handleComment = () => {};
   return (
     <div className="comments">
-      <p>1234 Comments</p>
+      <p>100 Comments</p>
       <div className="my-2 comments__form d-flex w-100">
-        <img
-          src="https://avatars.githubusercontent.com/u/78392799?v=4"
-          alt="imgperson"
-          className="rounded-circle me-3"
-        />
+        <img src="" alt="avatar" className="mr-3 rounded-circle" />
         <form onSubmit={handleComment} className="d-flex flex-grow-1">
           <input
             type="text"
             className="flex-grow-1"
-            placeholder="Agregar un comemtario publico..."
+            placeholder="Write a comment..."
           />
-          <button className="border-0 p-2">Comentar</button>
+          <button className="p-2 border-0">Comment</button>
         </form>
       </div>
-
       <div className="comments__list">
         {[...Array(20)].map(() => (
           <Comment />

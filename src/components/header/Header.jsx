@@ -27,7 +27,7 @@ export default function Header({ handleToggleSidebar }) {
         <MdApps size={28} />
         <img
           src="https://avatars.githubusercontent.com/u/78392799?v=4"
-          alt="imgperson"
+          alt=""
         />
       </div>
     </div>
