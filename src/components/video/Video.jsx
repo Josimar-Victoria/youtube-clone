@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { AiFillEye } from "react-icons/ai";
 import request from "../../service/api";
 import "./_video.scss";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 export default function Video({ video }) {
   const {
     id,
@@ -59,7 +60,8 @@ export default function Video({ video }) {
     <div className="video">
       <div className="video__hover">
         <div className="video__top">
-          <img src={medium.url} alt={title} />
+          {/* <img src={medium.url} alt={title} /> */}
+          <LazyLoadImage src={medium.url} effect='blur' />
           <span className="video__top__duration">{_duration}</span>
         </div>
         <div className="video__title">{title}</div>
@@ -72,7 +74,8 @@ export default function Video({ video }) {
         </div>
       </div>
       <div className="video__channel">
-        <img className="video__img-cover" src={channelIcon?.url} alt={title} />
+        {/* <img className="video__img-cover" src={channelIcon?.url} alt={title} /> */}
+        <LazyLoadImage src={channelIcon?.url} effect='blur' />
         <p>{channelTitle}</p>
       </div>
     </div>

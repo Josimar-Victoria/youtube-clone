@@ -5,7 +5,10 @@
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 100vh;
+  height: 90vh;
+  position: sticky;
+  top: 10vh;
+  left: 0;
 
   transition: transform 0.2s ease-in;
   -webkit-transition: transform 0.2s ease-in;

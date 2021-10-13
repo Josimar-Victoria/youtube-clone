@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./_global.scss";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import reportWebVitals from "./reportWebVitals";
-import App from "./screens/app/App";
+
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import App from "./router/App";
 
 ReactDOM.render(
   <React.StrictMode>
