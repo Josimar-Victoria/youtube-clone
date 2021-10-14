@@ -7,7 +7,7 @@ export default function Comments() {
     <div className="comments">
       <p>100 Comments</p>
       <div className="my-2 comments__form d-flex w-100">
-        <img src="" alt="avatar" className="mr-3 rounded-circle" />
+        <img src="https://avatars.githubusercontent.com/u/78392799?v=4" alt="avatar" className="mr-3 rounded-circle" />
         <form onSubmit={handleComment} className="d-flex flex-grow-1">
           <input
             type="text"

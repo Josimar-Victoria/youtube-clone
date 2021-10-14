@@ -10,7 +10,7 @@ export default function WatchScreen() {
       <Col lg={8}>
         <div className="watchScreen__player">
           <iframe
-            src="https://www.youtube.com/08be2f22-43d4-4bc7-b23b-fd8c584213c0"
+            src="https://www.youtube.com/embed/tgbNymZ7vqY"
             frameBorder="0"
             title="MY VIDEO"
             allowFullscreen

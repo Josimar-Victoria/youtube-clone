@@ -9,7 +9,7 @@ import {
   getPopularVideos,
   getVideosByCategory,
 } from "../../redux/actions/videos.action";
-import Skeleton from "react-loading-skeleton";
+
 import SkeletonVideo from "../../components/skeletonVideo/SkeletonVideo";
 
 export default function HomeScreen() {
