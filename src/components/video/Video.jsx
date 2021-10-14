@@ -5,6 +5,7 @@ import { AiFillEye } from "react-icons/ai";
 import request from "../../service/api";
 import "./_video.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useHistory } from "react-router";
 export default function Video({ video }) {
   const {
     id,
@@ -24,6 +25,7 @@ export default function Video({ video }) {
   const segundos = moment.duration(duration).asSeconds();
   const _duration = moment.utc(segundos * 1000).format("mm:ss");
   const _videoId = id?.videoId || id;
+  const history = useHistory();
   useEffect(() => {
     const get_video_details = async () => {
       const {
@@ -55,9 +57,11 @@ export default function Video({ video }) {
     };
     get_channel_icon();
   }, [channelId]);
-
+const handleVideoClick = () => {
+  history.push(`/watch/${_videoId}`)
+}
   return (
-    <div className="video">
+    <div className="video" onClick={handleVideoClick}>
       <div className="video__hover">
         <div className="video__top">
           {/* <img src={medium.url} alt={title} /> */}

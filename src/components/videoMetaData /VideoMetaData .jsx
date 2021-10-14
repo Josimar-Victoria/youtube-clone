@@ -1,28 +1,38 @@
 import moment from "moment";
 import numeral from "numeral";
-import React from "react";
+import React, { useEffect } from "react";
 import { MdThumbUp, MdThumbDown } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import ShowMoreText from "react-show-more-text";
+import { getChannelDetails } from "../../redux/actions/channel.action";
 
 import "./styles.scss";
-export default function VideoMetaData() {
+export default function VideoMetaData({ video: { snippet, statistics } }) {
+  const { channelId, channelTitle, description, title, publishedAt } = snippet;
+  const { viewCount, likeCount, dislikeCount } = statistics;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getChannelDetails(channelId));
+  }, [dispatch, channelId]);
+
   return (
     <div className="videoMetaData py-2">
       <div className="videoMetaData__top">
-        <h5>Video Title</h5>
+        <h5>{title}</h5>
         <div className="d-flex justify-content-between align-items-center py-1">
           <span>
-            {numeral(1000000).format("0.a")} Views •{" "}
-            {moment("2021-09-11").fromNow()}
+            {numeral(viewCount).format("0.a")} Views •{" "}
+            {moment(publishedAt).fromNow()}
           </span>
           <div>
             <span className="m-4">
               <MdThumbUp size={26} />
-              {numeral(1000000).format("0.a")}
+              {numeral(likeCount).format("0.a")}
             </span>
             <span className="mr-3">
               <MdThumbDown size={26} />
-              {numeral(1000000).format("0.a")}
+              {numeral(dislikeCount).format("0.a")}
             </span>
           </div>
         </div>
@@ -35,7 +45,7 @@ export default function VideoMetaData() {
             alt=""
           />
           <div className="d-flex flex-column">
-            <span>Josimar Dev {""}</span>
+            <span>{channelTitle}</span>
             <span>{numeral(100000).format("0.a")} Subscribers </span>
           </div>
         </div>
@@ -49,36 +59,7 @@ export default function VideoMetaData() {
           anchorClass="showMoreText"
           expanded={false}
         >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ut
-          ratione unde quae assumenda. Ea iure, aut ducimus saepe ipsa quibusdam
-          perferendis iusto tenetur beatae cumque. Assumenda quam neque maiores?
+          {description}
         </ShowMoreText>
       </div>
     </div>

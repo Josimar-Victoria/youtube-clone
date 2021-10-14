@@ -15,14 +15,14 @@ const keywords = [
   "Music",
   "Algorithm Art ",
   "Guitar",
-  "Bengali Songs",
+  "Baulio fogon",
   "Coding",
   "Cricket",
   "Football",
   "Real Madrid",
   "Gatsby",
-  "Poor Coder",
-  "anuel aa",
+  "Rochy rd",
+  "Anuel aa",
 ];
 export default function CategoriesBar() {
   const [activeElement, setActiveElement] = useState("All");

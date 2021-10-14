@@ -3,6 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdNotifications, MdApps } from "react-icons/md";
 import "./_header.scss";
+import { Link } from "react-router-dom";
 export default function Header({ handleToggleSidebar }) {
   return (
     <div className="border border-dark header">
@@ -11,11 +12,13 @@ export default function Header({ handleToggleSidebar }) {
         size={26}
         onClick={() => handleToggleSidebar()}
       />
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
-        alt="logo"
-        className="header__logo"
-      />
+      <Link to="/">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
+          alt="logo"
+          className="header__logo"
+        />
+      </Link>
       <form action="">
         <input type="text" placeholder="Buscar..." />
         <button type="submit">

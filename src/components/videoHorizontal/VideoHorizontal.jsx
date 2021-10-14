@@ -17,7 +17,7 @@ export default function VideoHorizontal() {
           className="videoHorizontal__thumbnail mb-1"
           wrapperClassName="videoHorizontal__thumbnail-wrapper"
         />
-        <span className="video__top__duration">{_duration}</span>
+        <span className="videoHorizontal__duration">{_duration}</span>
       </Col>
       <Col xs={6} md={8} className="videoHorizontal__right p-0">
         <p className="videoHorizontal__title mb-1">
