@@ -34,7 +34,7 @@ export default function WatchScreen() {
           !loading ? <VideoMetaData videoId={id} video={video} /> : <h6>cargando ...</h6>
         }
         
-        <Comments />
+        <Comments videoId={id}  />
       </Col>
       <Col lg={4}>
         {[...Array(10)].map(() => (

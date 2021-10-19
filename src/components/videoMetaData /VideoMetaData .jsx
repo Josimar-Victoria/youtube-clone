@@ -2,18 +2,26 @@ import moment from "moment";
 import numeral from "numeral";
 import React, { useEffect } from "react";
 import { MdThumbUp, MdThumbDown } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ShowMoreText from "react-show-more-text";
-import { getChannelDetails } from "../../redux/actions/channel.action";
+import {
+  checkSubscriptionStatus,
+  getChannelDetails,
+} from "../../redux/actions/channel.action";
 
 import "./styles.scss";
 export default function VideoMetaData({ video: { snippet, statistics } }) {
+  
   const { channelId, channelTitle, description, title, publishedAt } = snippet;
   const { viewCount, likeCount, dislikeCount } = statistics;
   const dispatch = useDispatch();
 
+  const { snippet: channelSnippet, statistics: channelStatistics } =
+    useSelector((state) => state.channelDetails.channel);
+
   useEffect(() => {
     dispatch(getChannelDetails(channelId));
+    dispatch(checkSubscriptionStatus(channelId));
   }, [dispatch, channelId]);
 
   return (
@@ -41,12 +49,15 @@ export default function VideoMetaData({ video: { snippet, statistics } }) {
         <div className="d-flex">
           <img
             className="rounded-circle me-3"
-            src="https://avatars.githubusercontent.com/u/78392799?v=4"
+            src={channelSnippet?.thumbnails?.default?.url}
             alt=""
           />
           <div className="d-flex flex-column">
             <span>{channelTitle}</span>
-            <span>{numeral(100000).format("0.a")} Subscribers </span>
+            <span>
+              {numeral(channelStatistics?.subscriberCount).format("0.a")}{" "}
+              Subscribers{" "}
+            </span>
           </div>
         </div>
         <button className="btn border-0 p-2 m-2">Subscribe</button>
