@@ -19,6 +19,8 @@ export default function VideoMetaData({ video: { snippet, statistics } }) {
   const { snippet: channelSnippet, statistics: channelStatistics } =
     useSelector((state) => state.channelDetails.channel);
 
+const { subscriptionStatus } = useSelector((state) => state.channelDetails.subscriptionStatus)
+
   useEffect(() => {
     dispatch(getChannelDetails(channelId));
     dispatch(checkSubscriptionStatus(channelId));
@@ -60,7 +62,7 @@ export default function VideoMetaData({ video: { snippet, statistics } }) {
             </span>
           </div>
         </div>
-        <button className="btn border-0 p-2 m-2">Subscribe</button>
+        <button className="btn border-0 p-2 m-2">{subscriptionStatus ? 'Subscribed' : 'Subscribe'}</button>
       </div>
       <div className="videoMetaData__description">
         <ShowMoreText

@@ -6,7 +6,10 @@ import { useParams } from "react-router";
 import Comments from "../../components/comments/Comments";
 import VideoHorizontal from "../../components/videoHorizontal/VideoHorizontal";
 import VideoMetaData from "../../components/videoMetaData /VideoMetaData ";
-import { getVideoById } from "../../redux/actions/videos.action";
+import {
+  getRelatedVideos,
+  getVideoById,
+} from "../../redux/actions/videos.action";
 import "./styles.scss";
 export default function WatchScreen() {
   const { id } = useParams();
@@ -14,9 +17,13 @@ export default function WatchScreen() {
 
   useEffect(() => {
     dispatch(getVideoById(id));
+    dispatch(getRelatedVideos(id));
   }, [dispatch, id]);
-
-  const {video, loading} = useSelector(state => state.selectedVideo);
+  const { videos, loading: relatedVideosLoading } = useSelector(
+    (state) => state.relatedVideo
+  );
+  const { video, loading } = useSelector((state) => state.selectedVideo);
+  console.log(video);
   return (
     <Row>
       <Col lg={8}>
@@ -30,16 +37,24 @@ export default function WatchScreen() {
             height="100%"
           ></iframe>
         </div>
-        {
-          !loading ? <VideoMetaData videoId={id} video={video} /> : <h6>cargando ...</h6>
-        }
-        
-        <Comments videoId={id}  />
+        {!loading ? (
+          <VideoMetaData videoId={id} video={video} />
+        ) : (
+          <h6>cargando ...</h6>
+        )}
+
+        <Comments
+          videoId={id}
+          totalComments={video?.statistics?.commentCount}
+        />
       </Col>
       <Col lg={4}>
-        {[...Array(10)].map(() => (
-          <VideoHorizontal />
-        ))}
+        {!loading &&
+          videos
+            ?.filter((video) => video.snippet)
+            .map((video) => (
+              <VideoHorizontal video={video} key={video.id.videoId} />
+            ))}
       </Col>
     </Row>
   );

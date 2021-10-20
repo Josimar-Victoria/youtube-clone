@@ -12,7 +12,7 @@ const keywords = [
   "React Native",
   "use of API",
   "Redux",
-  "Music",
+  "Alofoke",
   "Algorithm Art ",
   "Guitar",
   "Baulio fogon",

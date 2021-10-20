@@ -1,19 +1,21 @@
 import moment from "moment";
 import React from "react";
 import "./styles.scss";
-export default function Comment() {
+export default function Comment({comment}) {
+
+  const {authorDisplayName,authorProfileImageUrl,textDisplay, publishedAt} = comment
   return (
     <div className="comment p-2 d-flex">
       <img
-        src="https://avatars.githubusercontent.com/u/78392799?v=4"
+        src={authorProfileImageUrl}
         alt="imgperson"
         className="rounded-circle me-3"
       />
       <div className="comment__body">
         <p className="comment__header mb-1">
-          Josimar V • {moment("2021-9-11").fromNow()}
+          {authorDisplayName}• {moment(publishedAt).fromNow()}
         </p>
-        <p className="mb-0">Nice Video DUDE!!!</p>
+        <p className="mb-0">{textDisplay}</p>
       </div>
     </div>
   );

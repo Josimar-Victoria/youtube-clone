@@ -1,18 +1,35 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getCommentsOfVideoById } from "../../redux/actions/comments.action";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addComment,
+  getCommentsOfVideoById,
+} from "../../redux/actions/comments.action";
 import Comment from "../comment/Comment";
 import "./styles.scss";
-export default function Comments({videoId}) {
+export default function Comments({ videoId, totalComments }) {
   const dispatch = useDispatch();
-
+  const [text, setText] = useState("");
   useEffect(() => {
     dispatch(getCommentsOfVideoById(videoId));
   }, [dispatch, videoId]);
-  const handleComment = () => {};
+
+  const comments = useSelector((state) => state.commentList.comments);
+  console.log(comments);
+
+  const _comments = comments?.map(
+    (comment) => comment.snippet.topLevelComment.snippet
+  );
+
+  
+  const handleComment = (e) => {
+    e.preventDefault();
+    if (text.length === 0) return
+    dispatch(addComment(videoId, text));
+    setText('')
+  };
   return (
     <div className="comments">
-      <p>100 Comments</p>
+      <p>{totalComments} Comments</p>
       <div className="my-2 comments__form d-flex w-100">
         <img
           src="https://avatars.githubusercontent.com/u/78392799?v=4"
@@ -24,13 +41,15 @@ export default function Comments({videoId}) {
             type="text"
             className="flex-grow-1"
             placeholder="Write a comment..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
           <button className="p-2 border-0">Comment</button>
         </form>
       </div>
       <div className="comments__list">
-        {[...Array(20)].map(() => (
-          <Comment />
+        {_comments?.map((comment, i) => (
+          <Comment key={i} comment={comment} />
         ))}
       </div>
     </div>
