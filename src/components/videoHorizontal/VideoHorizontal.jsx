@@ -20,11 +20,10 @@ export default function VideoHorizontal({ video }) {
       description,
       title,
       publishedAt,
-      thumbnails:{medium},
+      thumbnails: { medium },
     },
   } = video;
 
-  const history = useHistory();
   useEffect(() => {
     const get_video_details = async () => {
       const {
@@ -57,11 +56,15 @@ export default function VideoHorizontal({ video }) {
     get_channel_icon();
   }, [channelId]);
 
-  const segundos = moment.duration(1000).asSeconds();
+  const history = useHistory();
+  const handleClick = (e) => {
+    history.push(`/watch/${id.videoId}`);
+  };
+  const segundos = moment.duration(duration).asSeconds();
   const _duration = moment.utc(segundos * 1000).format("mm:ss");
   return (
-    <Row>
-      <Col xs={6} md={4} className="videoHorizontal__left">
+    <Row className="py-2 m-1" onClick={handleClick}>
+      <Col xs={6} md={6} className="videoHorizontal__left">
         <LazyLoadImage
           src={medium.url}
           effect="blur"
@@ -70,21 +73,18 @@ export default function VideoHorizontal({ video }) {
         />
         <span className="videoHorizontal__duration">{_duration}</span>
       </Col>
-      <Col xs={6} md={8} className="videoHorizontal__right p-0">
-        <p className="videoHorizontal__title mb-1">
-          Be a full stack developer in 1 month
-        </p>
+      <Col xs={6} md={6} className="videoHorizontal__right p-0">
+        <p className="videoHorizontal__title mb-1">{title}</p>
         <div className="videoHorizontal__details">
           <AiFillEye />
-          {numeral(1000000).format("0.a")} Views •{" "}
-          {moment("2021-08-9").fromNow()}
+          {numeral(views).format("0.a")} Views • {moment(publishedAt).fromNow()}
         </div>
         <div className="videoHorizontal__channel d-flex align-items-center my-1">
           <LazyLoadImage
             src="https://avatars.githubusercontent.com/u/78392799?v=4"
             effect="blur"
           />
-          <p>Josimar Dev</p>
+          <p className="mb-0">{channelTitle}</p>
         </div>
       </Col>
     </Row>

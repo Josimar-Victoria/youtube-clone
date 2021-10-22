@@ -2,13 +2,15 @@
 
 .videoHorizontal {
   border-bottom: 0.3px solid $black-border-color;
-
-  cursor: pointer;
+  
+  
 
   &__left {
     position: relative;
     text-align: center;
     padding-left: 0 !important;
+    cursor: pointer;
+    
   }
 
   &__thumbnail {
@@ -26,8 +28,8 @@
   &__duration {
     position: absolute;
 
-    bottom: 0.6rem;
-    right: 1.0rem;
+    bottom: 0.65rem;
+    right: 1.2rem;
 
     font-size: 0.9rem;
     padding: 0.2rem;
@@ -41,6 +43,7 @@
 
   &__title {
     font-size: 0.95rem;
+    cursor: pointer;
 
     // color: #fff;
     letter-spacing: 0.3px;
