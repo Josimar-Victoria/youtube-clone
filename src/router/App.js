@@ -1,8 +1,9 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import NoMatch from "../components/noMatch/NoMatch";
 import HomeScreen from "../screens/homeScreen/HomeScreen";
 import LoginScreen from "../screens/loginScreen/LoginScreen";
+import SearchScreen from "../screens/watchScreen/SearchScreen";
 import WatchScreen from "../screens/watchScreen/WatchScreen";
 
 function App() {
@@ -17,15 +18,18 @@ function App() {
         <Route path="/login">
           <LoginScreen />
         </Route>
-        <Route exact path="/search">
+        <Route exact path="/search/:query">
           <Layout>
-            <h1>Search Resultados</h1>
+            <SearchScreen />
           </Layout>
         </Route>
         <Route exact path="/watch/:id">
           <Layout>
             <WatchScreen />
           </Layout>
+        </Route>
+        <Route>
+          <Redirect to="/" />
         </Route>
         <Route path="*">
           <NoMatch />

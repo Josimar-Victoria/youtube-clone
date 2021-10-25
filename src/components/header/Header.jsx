@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdNotifications, MdApps } from "react-icons/md";
+import { useHistory } from "react-router";
 import "./_header.scss";
 import { Link } from "react-router-dom";
 export default function Header({ handleToggleSidebar }) {
+  const [input, setInput] = useState("");
+
+  const history = useHistory();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    history.push(`search/${input}`);
+  }
+
   return (
     <div className="border border-dark header">
       <FaBars
@@ -19,8 +29,13 @@ export default function Header({ handleToggleSidebar }) {
           className="header__logo"
         />
       </Link>
-      <form action="">
-        <input type="text" placeholder="Buscar..." />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
         <button type="submit">
           <AiOutlineSearch size={22} />
         </button>

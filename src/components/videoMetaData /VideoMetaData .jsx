@@ -62,7 +62,7 @@ const { subscriptionStatus } = useSelector((state) => state.channelDetails.subsc
             </span>
           </div>
         </div>
-        <button className="btn border-0 p-2 m-2">{subscriptionStatus ? 'Subscribed' : 'Subscribe'}</button>
+        <button className="btn border-0 p-2 m-2">Subscribe</button>
       </div>
       <div className="videoMetaData__description">
         <ShowMoreText

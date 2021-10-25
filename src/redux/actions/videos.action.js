@@ -6,6 +6,9 @@ import {
   RELATED_VIDEO_FAIL,
   RELATED_VIDEO_REQUEST,
   RELATED_VIDEO_SUCCESS,
+  SEARCHED_VIDEO_FAIL,
+  SEARCHED_VIDEO_REQUEST,
+  SEARCHED_VIDEO_SUCCESS,
   SELECTED_VIDEO_FAIL,
   SELECTED_VIDEO_REQUEST,
   SELECTED_VIDEO_SUCCESS,
@@ -43,7 +46,7 @@ export const getPopularVideos = () => async (dispatch, getState) => {
     });
   }
 };
-//llamado de categorias de video 
+//llamado de categorias de video
 export const getVideosByCategory = (keyword) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -104,29 +107,57 @@ export const getVideoById = (id) => async (dispatch) => {
 
 //llamado de videos horizontales peticion de videos relacionados
 
-export const getRelatedVideos = id => async dispatch => {
+export const getRelatedVideos = (id) => async (dispatch) => {
   try {
-     dispatch({
-        type: RELATED_VIDEO_REQUEST,
-     })
+    dispatch({
+      type: RELATED_VIDEO_REQUEST,
+    });
 
-     const { data } = await request('/search', {
-        params: {
-           part: 'snippet',
-           relatedToVideoId: id,
-           maxResults: 30,
-           type: 'video',
-        },
-     })
-     dispatch({
-        type: RELATED_VIDEO_SUCCESS,
-        payload: data.items,
-     })
+    const { data } = await request("/search", {
+      params: {
+        part: "snippet",
+        relatedToVideoId: id,
+        maxResults: 30,
+        type: "video",
+      },
+    });
+    dispatch({
+      type: RELATED_VIDEO_SUCCESS,
+      payload: data.items,
+    });
   } catch (error) {
-     console.log(error.response.data.message)
-     dispatch({
-        type: RELATED_VIDEO_FAIL,
-        payload: error.response.data.message,
-     })
+    console.log(error.response.data.message);
+    dispatch({
+      type: RELATED_VIDEO_FAIL,
+      payload: error.response.data.message,
+    });
   }
-}
+};
+
+//Search Busacdor de videos
+export const getVideosBySearch = (keyword) => async (dispatch) => {
+  try {
+    dispatch({
+      type: SEARCHED_VIDEO_REQUEST,
+    });
+    const { data } = await request("/search", {
+      params: {
+        part: "snippet",
+        maxResults: 20,
+        q: keyword,
+        type: "video,channel",
+      },
+    });
+
+    dispatch({
+      type: SEARCHED_VIDEO_SUCCESS,
+      payload: data.items,
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch({
+      type: SEARCHED_VIDEO_FAIL,
+      payload: error.message,
+    });
+  }
+};
