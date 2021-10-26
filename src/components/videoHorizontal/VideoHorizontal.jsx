@@ -17,7 +17,6 @@ export default function VideoHorizontal({ video, searchScreen }) {
     snippet: {
       channelId,
       channelTitle,
-      description,
       title,
       publishedAt,
       thumbnails: { medium },

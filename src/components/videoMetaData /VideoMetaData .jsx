@@ -19,7 +19,6 @@ export default function VideoMetaData({ video: { snippet, statistics } }) {
   const { snippet: channelSnippet, statistics: channelStatistics } =
     useSelector((state) => state.channelDetails.channel);
 
-const { subscriptionStatus } = useSelector((state) => state.channelDetails.subscriptionStatus)
 
   useEffect(() => {
     dispatch(getChannelDetails(channelId));

@@ -16,7 +16,6 @@ export default function Video({ video }) {
       publishedAt,
       thumbnails: { medium },
     },
-    contentDetails,
   } = video;
   const [views, setViews] = useState(null);
   const [duration, setDuration] = useState(null);
@@ -57,15 +56,15 @@ export default function Video({ video }) {
     };
     get_channel_icon();
   }, [channelId]);
-const handleVideoClick = () => {
-  history.push(`/watch/${_videoId}`)
-}
+  const handleVideoClick = () => {
+    history.push(`/watch/${_videoId}`);
+  };
   return (
     <div className="video" onClick={handleVideoClick}>
       <div className="video__hover">
         <div className="video__top">
           {/* <img src={medium.url} alt={title} /> */}
-          <LazyLoadImage src={medium.url} effect='blur' />
+          <LazyLoadImage src={medium.url} effect="blur" />
           <span className="video__top__duration">{_duration}</span>
         </div>
         <div className="video__title">{title}</div>
@@ -79,7 +78,7 @@ const handleVideoClick = () => {
       </div>
       <div className="video__channel">
         {/* <img className="video__img-cover" src={channelIcon?.url} alt={title} /> */}
-        <LazyLoadImage src={channelIcon?.url} effect='blur' />
+        <LazyLoadImage src={channelIcon?.url} effect="blur" />
         <p>{channelTitle}</p>
       </div>
     </div>

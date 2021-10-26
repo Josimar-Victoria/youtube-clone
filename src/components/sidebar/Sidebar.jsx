@@ -10,7 +10,8 @@ import {
   MdHome,
   MdSentimentDissatisfied,
 } from "react-icons/md";
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { log_out } from "../../redux/actions/auth.action";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
@@ -18,6 +19,7 @@ import { Link } from "react-router-dom";
 export default function Sidebar({ sidebar, handleToggleSidebar }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { user } = useSelector((state) => state.auth);
   const handlerLogOut = () => {
     dispatch(log_out());
     history.push("/login");
@@ -33,35 +35,40 @@ export default function Sidebar({ sidebar, handleToggleSidebar }) {
           <span>Home</span>
         </li>
       </Link>
-      <Link to="/feed/subscriptions">
+      <Link to="#">
         <li>
           <MdSubscriptions size={23} />
-          <span>Subscriptions</span>
+          {/* <span>Subscriptions</span> */}
+          <span> no funcioina</span>
         </li>
       </Link>
       <Link to="#">
         <li>
           <MdThumbUp size={23} />
-          <span>Liked Video</span>
+          {/* <span>Liked Video </span> */}
+          <span> no funcioina</span>
         </li>
       </Link>
 
       <Link to="#">
         <li>
           <MdHistory size={23} />
-          <span>History</span>
+          {/* <span>History</span> */}
+          <span> no funcioina</span>
         </li>
       </Link>
       <Link to="#">
         <li>
           <MdLibraryBooks size={23} />
-          <span>Library</span>
+          {/* <span>Library</span> */}
+          <span> no funcioina</span>
         </li>
       </Link>
       <Link to="#">
         <li>
           <MdSentimentDissatisfied size={23} />
-          <span>I don't Know</span>
+          {/* <span>I don't Know</span> */}
+          <span> no funcioina</span>
         </li>
       </Link>
 
@@ -69,7 +76,7 @@ export default function Sidebar({ sidebar, handleToggleSidebar }) {
 
       <li onClick={handlerLogOut}>
         <MdExitToApp size={23} />
-        <span>Log Out</span>
+        <span>{user ? "Log Out" : "login"}</span>
       </li>
 
       <hr />
