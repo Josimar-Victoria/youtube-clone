@@ -25,7 +25,7 @@ export default function SearchScreen() {
         ))
       ) : (
         <SkeletonTheme color="#343a40" highlightColor="#3c4147">
-          <Skeleton width="100%" height="160px" count={20} />
+          <Skeleton width="100%" height="16 0px" count={20} />
         </SkeletonTheme>
       )}
     </Container>

@@ -43,10 +43,6 @@ export default function Header({ handleToggleSidebar }) {
       <div className="header__icons">
         <MdNotifications size={28} />
         <MdApps size={28} />
-        <img
-          src="https://avatars.githubusercontent.com/u/78392799?v=4"
-          alt=""
-        />
       </div>
     </div>
   );

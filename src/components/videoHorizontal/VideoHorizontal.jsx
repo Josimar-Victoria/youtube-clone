@@ -97,7 +97,7 @@ export default function VideoHorizontal({ video, searchScreen }) {
             {moment(publishedAt).fromNow()}
           </div>
         )}
-        {isvideo && <p className="mt-1">{description}</p>}
+        
         <div className="videoHorizontal__channel d-flex align-items-center my-1">
           {isvideo && <LazyLoadImage src={channelIcon?.url} effect="blur" />}
 
