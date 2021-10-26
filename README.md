@@ -1,5 +1,6 @@
 Youtube_clone https://youtu-yango-faz.netlify.app/
 <img src='https://github.com/Josimar-Victoria/youtube-clone/blob/main/Captura%20de%20pantalla%20de%202021-10-26%2012-04-51.png?raw=true' alt='img'/>
+<img src='https://github.com/Josimar-Victoria/youtube-clone/blob/main/Captura%20de%20pantalla%20de%202021-10-26%2012-04-55.png?raw=true' alt='img'/>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
