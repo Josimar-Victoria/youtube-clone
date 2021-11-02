@@ -7,6 +7,7 @@ import {
   LOG_OUT,
   LOG_PROFILE,
 } from "../actionType";
+
 export const login = () => async (dispatch) => {
   try {
     dispatch({

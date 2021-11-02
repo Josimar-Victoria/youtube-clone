@@ -20,6 +20,8 @@ export default function LoginScreen() {
       history.push("/");
     }
   }, [accessToken, history]);
+
+  console.log(accessToken)
   return (
     <div className="login">
       <div className="login__container">
